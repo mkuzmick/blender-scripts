@@ -19,12 +19,12 @@ def getRadius(pQuant):
     radius = round_half_up((pQuant*3./(4.*3.14159))**(1./3))
     return radius
 
-bpy.ops.wm.append(directory='/Users/mk/Desktop/_blender/prefabs/pumpkin-template.blend\\Object\\', filename="Pumpkin")
-bpy.ops.wm.append(directory='/Users/mk/Desktop/_blender/prefabs/a380.blend\\Object\\', filename="Plane")
+bpy.ops.wm.append(directory=f'{homeDirectory}/Desktop/_blender/prefabs/pumpkin-template.blend\\Object\\', filename="Pumpkin")
+bpy.ops.wm.append(directory=f'{homeDirectory}/Desktop/_blender/prefabs/a380.blend\\Object\\', filename="Plane")
 bpy.data.objects["Plane"].location[0]=-120
 bpy.data.objects["Plane"].rotation_euler[2]=-1.18
 
-with open('/Users/mk/Desktop/_blender/data/pumpkin-data.json') as data_file:
+with open(f'{homeDirectory}/Desktop/_blender/data/pumpkin-data.json') as data_file:
     data = json.load(data_file)
 
 pumpkinTemplate = bpy.data.objects["Pumpkin"]
@@ -63,7 +63,7 @@ for i, country in enumerate(data):
     bpy.context.object.hide_viewport = False
     xVal+=(country["radius"]+10)
 
-bpy.ops.wm.save_as_mainfile(filepath="/Users/mk/Desktop/output.blend")
+bpy.ops.wm.save_as_mainfile(filepath=f'{homeDirectory}/Desktop/output.blend')
 
 
     # need to add ground
